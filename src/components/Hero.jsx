@@ -1,18 +1,12 @@
 
-import { useState } from "react";
-
-function Hero() {
-  const [search, setSearch] = useState("");
+function Hero({ search, onSearchChange, onSearch, onBrowseExercises }) {
 
   const handleSearch = (e) => {
     e.preventDefault();
 
     const keyword = search.trim();
 
-    if (!keyword) return;
-
-    // Tạm thời kiểm tra từ khóa tìm kiếm
-    alert(`Bạn đang tìm kiếm: ${keyword}`);
+    onSearch(keyword);
   };
 
   return (
@@ -50,7 +44,7 @@ function Hero() {
             type="text"
             placeholder="Tìm bài tập: squat, ngực, tạ đơn..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => onSearchChange(e.target.value)}
             aria-label="Tìm kiếm bài tập"
           />
 
@@ -61,7 +55,7 @@ function Hero() {
 
         {/* Hai nút điều hướng */}
         <div className="hero-actions">
-          <a href="#exercises" className="primary-button">
+          <a href="#exercises" className="primary-button" onClick={onBrowseExercises}>
             Khám phá bài tập →
           </a>
 

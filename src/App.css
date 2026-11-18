@@ -578,3 +578,58 @@
   width: 100%;
   z-index: 1000;
 }
+
+.exercise-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-bottom: 24px;
+}
+
+.exercise-tools label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.exercise-tools select {
+  padding: 10px 14px;
+  border: 1px solid #414a58;
+  border-radius: 7px;
+  background: #171c26;
+  color: white;
+  color-scheme: dark;
+  font: inherit;
+}
+
+.exercise-tools button {
+  overflow-wrap: anywhere;
+}
+
+.workout-history {
+  padding: clamp(40px, 7vw, 80px) 8%;
+  scroll-margin-top: 160px;
+}
+
+.workout-history h2 {
+  margin-bottom: 20px;
+}
+
+.workout-history-table {
+  overflow-x: auto;
+}
+
+.workout-history table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #171c26;
+}
+
+.workout-history th,
+.workout-history td {
+  padding: 12px;
+  border-bottom: 1px solid #303746;
+  text-align: left;
+}

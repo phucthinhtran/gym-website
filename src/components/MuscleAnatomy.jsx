@@ -120,7 +120,7 @@ export default function MuscleAnatomy({ onSelectMuscle }) {
       chart.destroy();
       chartRef.current = null;
     };
-  }, []);
+  }, [onSelectMuscle]);
 
   useEffect(() => {
     chartRef.current?.update({ bodyState });

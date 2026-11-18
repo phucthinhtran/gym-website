@@ -112,6 +112,11 @@
   cursor: pointer;
 }
 
+.detail-schedule-link {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .detail-content-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

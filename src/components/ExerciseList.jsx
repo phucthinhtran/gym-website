@@ -1,9 +1,37 @@
-import { useState } from "react";
 import ExerciseDetail from "./ExerciseDetail";
 import { exercises } from "../data/exercises";
 
-function ExerciseList({ selectedMuscle, onSelectMuscle }) {
-  const [selectedExercise, setSelectedExercise] = useState(null);
+function normalizeSearch(value) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .replace(/đ/g, "d");
+}
+
+const catalog = exercises.map((exercise) => ({
+  exercise,
+  equipment: exercise.equipment.split(",").map((item) => item.trim()),
+  searchText: normalizeSearch(
+    [exercise.name, exercise.english, exercise.muscle, exercise.equipment].join(" "),
+  ),
+}));
+
+const equipmentOptions = [...new Set(catalog.flatMap((entry) => entry.equipment))]
+  .sort((a, b) => a.localeCompare(b, "vi"));
+
+function ExerciseList({
+  selectedMuscle,
+  onSelectMuscle,
+  onScheduleExercise,
+  selectedExercise,
+  onSelectExercise,
+  query,
+  onClearSearch,
+  equipment,
+  onSelectEquipment,
+  onWorkoutSaved,
+}) {
   const muscles = [
     "Tất cả",
     "Ngực",
@@ -15,20 +43,30 @@ function ExerciseList({ selectedMuscle, onSelectMuscle }) {
     "Mông",
   ];
 
-  const filteredExercises = exercises.filter(
-    (exercise) =>
-      selectedMuscle === "Tất cả" ||
-      exercise.muscle === selectedMuscle
+  const terms = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  const filteredExercises = catalog.filter(
+    (entry) =>
+      (selectedMuscle === "Tất cả" || entry.exercise.muscle === selectedMuscle) &&
+      (!equipment || entry.equipment.includes(equipment)) &&
+      terms.every((term) => entry.searchText.includes(term)),
   );
 
   if (selectedExercise) {
     return (
-      <ExerciseDetail
-        exercise={selectedExercise}
-        exercises={exercises}
-        onBack={() => setSelectedExercise(null)}
-        onSelectExercise={setSelectedExercise}
-      />
+      <div id="exercises">
+        <ExerciseDetail
+          key={selectedExercise.id}
+          exercise={selectedExercise}
+          exercises={exercises}
+          onBack={() => {
+            onSelectExercise(null);
+            document.getElementById("exercises")?.scrollIntoView({ behavior: "smooth" });
+          }}
+          onSelectExercise={onSelectExercise}
+          onScheduleExercise={onScheduleExercise}
+          onWorkoutSaved={onWorkoutSaved}
+        />
+      </div>
     );
   }
 
@@ -47,6 +85,7 @@ function ExerciseList({ selectedMuscle, onSelectMuscle }) {
           <button
             key={muscle}
             className={selectedMuscle === muscle ? "active" : ""}
+            aria-pressed={selectedMuscle === muscle}
             onClick={() => onSelectMuscle(muscle)}
           >
             {muscle}
@@ -54,18 +93,36 @@ function ExerciseList({ selectedMuscle, onSelectMuscle }) {
         ))}
       </div>
 
+      <div className="exercise-tools">
+        <label>
+          Dụng cụ
+          <select value={equipment} onChange={(event) => onSelectEquipment(event.target.value)}>
+            <option value="">Tất cả dụng cụ</option>
+            {equipmentOptions.map((item) => <option key={item}>{item}</option>)}
+          </select>
+        </label>
+        {query && (
+          <button type="button" className="secondary-button" onClick={onClearSearch}>
+            Xóa tìm kiếm “{query}”
+          </button>
+        )}
+        <p role="status">
+          {filteredExercises.length ? `${filteredExercises.length} bài tập` : "Không tìm thấy bài tập."}
+        </p>
+      </div>
+
       <div className="exercise-grid">
-        {filteredExercises.map((exercise) => (
+        {filteredExercises.map(({ exercise }) => (
           <article
             className="exercise-card"
             key={exercise.id}
             role="button"
             tabIndex={0}
-            onClick={() => setSelectedExercise(exercise)}
+            onClick={() => onSelectExercise(exercise)}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
-                setSelectedExercise(exercise);
+                onSelectExercise(exercise);
               }
             }}
           >

@@ -1,0 +1,67 @@
+.bmi-section {
+  padding: clamp(40px, 7vw, 90px) 5%;
+  scroll-margin-top: 140px;
+}
+
+.bmi-card {
+  max-width: 720px;
+  margin-inline: auto;
+  padding: clamp(20px, 4vw, 40px);
+  background: #171c26;
+  border: 1px solid #303746;
+  border-radius: 16px;
+}
+
+.bmi-card h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  margin-bottom: 10px;
+}
+
+.bmi-card > p {
+  color: #cbd5e1;
+}
+
+.bmi-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.bmi-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.bmi-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #414a58;
+  border-radius: 7px;
+  background: #0b0e14;
+  color: white;
+  color-scheme: dark;
+  font: inherit;
+}
+
+.bmi-form button {
+  border: 0;
+  color: #11151e;
+}
+
+.bmi-result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 20px;
+  padding: 14px;
+  background: #252b36;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .bmi-form {
+    grid-template-columns: 1fr;
+  }
+}

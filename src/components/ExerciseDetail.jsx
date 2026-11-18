@@ -1,8 +1,16 @@
 
 import { useState } from "react";
+import { appendWorkoutLog } from "../data/workoutLogs";
 import "./ExerciseDetail.css";
 
-function ExerciseDetail({ exercise, onBack, exercises = [], onSelectExercise }) {
+function ExerciseDetail({
+  exercise,
+  onBack,
+  exercises = [],
+  onSelectExercise,
+  onScheduleExercise,
+  onWorkoutSaved,
+}) {
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
   const [sets, setSets] = useState("");
@@ -39,18 +47,8 @@ function ExerciseDetail({ exercise, onBack, exercises = [], onSelectExercise }) 
     };
 
     try {
-      const oldRecords = JSON.parse(
-        localStorage.getItem("gym-workout-logs") || "[]"
-      );
-
-      const records = Array.isArray(oldRecords)
-        ? oldRecords
-        : [];
-
-      localStorage.setItem(
-        "gym-workout-logs",
-        JSON.stringify([...records, record])
-      );
+      const records = appendWorkoutLog(record);
+      onWorkoutSaved(records);
 
       setMessage("Đã lưu nhật ký tập luyện!");
       setWeight("");
@@ -135,6 +133,14 @@ function ExerciseDetail({ exercise, onBack, exercises = [], onSelectExercise }) 
           >
             ＋ Thêm vào nhật ký tập
           </button>
+
+          <a
+            className="secondary-button detail-schedule-link"
+            href="#schedule"
+            onClick={() => onScheduleExercise(String(exercise.id))}
+          >
+            Thêm vào lịch tập
+          </a>
         </div>
       </div>
 
@@ -249,7 +255,8 @@ function ExerciseDetail({ exercise, onBack, exercises = [], onSelectExercise }) 
           <button type="submit">Lưu</button>
         </form>
 
-        {message && <p className="save-message">{message}</p>}
+        <p className="save-message" role="status">{message}</p>
+        <a className="secondary-button" href="#workout-history">Xem nhật ký</a>
       </section>
 
       <section className="detail-related">
