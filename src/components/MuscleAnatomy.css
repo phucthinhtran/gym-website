@@ -1,0 +1,169 @@
+.anatomy-section {
+  background: #0b0b0b;
+  color: #fff;
+  padding: 70px 5%;
+}
+
+.anatomy-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.anatomy-heading span {
+  color: #ef4444;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.anatomy-heading h2 {
+  font-size: clamp(26px, 4vw, 46px);
+  margin: 12px 0;
+  font-weight: 900;
+}
+
+.anatomy-heading p {
+  color: #a3a3a3;
+}
+
+.anatomy-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.anatomy-visual {
+  background: #171717;
+  border: 1px solid #303030;
+  border-radius: 20px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.anatomy-figure-labels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+
+  max-width: 650px;
+  margin: 8px auto 0;
+
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 700;
+}
+.anatomy-figure-labels span:last-child {
+  transform: translateX(-20px);
+}
+.anatomy-figure-labels span {
+  text-align: center;
+}
+
+.anatomy-body-map {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  --bm-max-width-both: 100%;
+  --bm-max-height: 420px;
+  --bm-padding: 0;
+
+  --bm-background-fill: #777;
+  --bm-region-stroke: #444;
+  --bm-region-stroke-selected: #ff5555;
+  --bm-region-stroke-focus: #ef4444;
+  --bm-tooltip-bg: #262626;
+  --bm-tooltip-color: #fff;
+}
+
+.anatomy-body-map svg {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  margin: 0 auto;
+}
+
+.anatomy-selected {
+  text-align: center;
+  margin-top: 24px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.anatomy-selected h3 {
+  font-size: 26px;
+  color: #ef4444;
+  margin-bottom: 8px;
+}
+
+.anatomy-selected p {
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.anatomy-selected button {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 28px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.anatomy-selected button:hover {
+  background: #b91c1c;
+}
+
+.anatomy-category {
+  margin-bottom: 28px;
+}
+
+.anatomy-category h3 {
+  font-size: 15px;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.anatomy-muscle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.anatomy-muscle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 14px;
+  background: #171717;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.anatomy-muscle:hover,
+.anatomy-muscle.active {
+  border-color: #ef4444;
+  background: #351515;
+  color: #f87171;
+}
+
+@media (max-width: 900px) {
+  .anatomy-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .anatomy-section {
+    padding: 45px 16px;
+  }
+
+  .anatomy-visual {
+    padding: 12px;
+  }
+}

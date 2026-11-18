@@ -1,0 +1,55 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #0b0e14;
+  color: white;
+  min-width: 320px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+:root {
+  --primary-color: #dc2626;
+  --primary-hover: #b91c1c;
+  --primary-light: #fef2f2;
+  --primary-border: #fca5a5;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+#exercises {
+  scroll-margin-top: 90px;
+}
+body {
+  padding-top: 80px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+#muscles,
+#exercises {
+  scroll-margin-top: 90px;
+}
