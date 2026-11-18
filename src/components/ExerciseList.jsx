@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { videos } from "../data/videos";
 import ExerciseDetail from "./ExerciseDetail";
 import { exercises } from "../data/exercises";
 
@@ -48,7 +47,7 @@ function ExerciseList({ selectedMuscle, onSelectMuscle }) {
           <button
             key={muscle}
             className={selectedMuscle === muscle ? "active" : ""}
-            onClick={() => setSelectedMuscle(muscle)}
+            onClick={() => onSelectMuscle(muscle)}
           >
             {muscle}
           </button>
