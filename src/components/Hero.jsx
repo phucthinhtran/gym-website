@@ -1,3 +1,7 @@
+import { exercises } from "../data/exercises";
+
+const videoExercises = exercises.filter(({ video }) => video?.trim());
+const muscleCount = new Set(videoExercises.map(({ muscle }) => muscle)).size;
 
 function Hero({ search, onSearchChange, onSearch, onBrowseExercises }) {
 
@@ -15,7 +19,8 @@ function Hero({ search, onSearchChange, onSearch, onBrowseExercises }) {
 
         {/* Thông tin thư viện */}
         <p className="hero-label">
-          57 BÀI TẬP · 22 NHÓM CƠ · VIDEO MIỄN PHÍ
+          {videoExercises.length} BÀI TẬP · {muscleCount} NHÓM CƠ
+          {videoExercises.length > 0 && " · VIDEO MIỄN PHÍ"}
         </p>
 
         {/* Tiêu đề */}

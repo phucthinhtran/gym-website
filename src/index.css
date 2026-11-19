@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body);
   background-color: #0b0e14;
   color: white;
   min-width: 320px;
@@ -25,12 +25,27 @@ button {
   cursor: pointer;
 }
 
+h1,
+h2 {
+  font-family: var(--font-heading);
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
 #root {
   width: 100%;
   min-height: 100vh;
 }
 :root {
+  --font-body: "Be Vietnam Pro", Arial, sans-serif;
+  --font-heading: "Barlow Condensed", "Arial Narrow", sans-serif;
   --primary-color: #dc2626;
+  --accent-orange: #ff6b22;
+  --home-gutter: clamp(16px, 2vw, 24px);
   --primary-hover: #b91c1c;
   --primary-light: #fef2f2;
   --primary-border: #fca5a5;

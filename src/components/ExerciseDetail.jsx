@@ -81,6 +81,11 @@ function ExerciseDetail({
             controls
             preload="metadata"
           />
+          {exercise.videoSource && (
+            <p className="detail-video-source">
+              Nguồn video <a href={exercise.videoSource.url}>{exercise.videoSource.label}</a>
+            </p>
+          )}
         </div>
 
         <div className="detail-summary">
@@ -99,7 +104,7 @@ function ExerciseDetail({
           <div className="detail-stats">
             <div>
               <small>CƠ CHÍNH</small>
-              <strong className="lime-text">{exercise.muscle}</strong>
+              <strong className="accent-text">{exercise.primaryMuscle || exercise.muscle}</strong>
             </div>
             <div>
               <small>CƠ PHỤ</small>

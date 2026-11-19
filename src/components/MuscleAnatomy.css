@@ -10,7 +10,7 @@
 }
 
 .anatomy-heading span {
-  color: #ef4444;
+  color: var(--accent-orange);
   font-weight: 700;
   letter-spacing: 3px;
 }
@@ -70,8 +70,8 @@
 
   --bm-background-fill: #777;
   --bm-region-stroke: #444;
-  --bm-region-stroke-selected: #ff5555;
-  --bm-region-stroke-focus: #ef4444;
+  --bm-region-stroke-selected: var(--accent-orange);
+  --bm-region-stroke-focus: var(--accent-orange);
   --bm-tooltip-bg: #262626;
   --bm-tooltip-color: #fff;
 }
@@ -92,7 +92,7 @@
 
 .anatomy-selected h3 {
   font-size: 26px;
-  color: #ef4444;
+  color: var(--accent-orange);
   margin-bottom: 8px;
 }
 
@@ -102,8 +102,8 @@
 }
 
 .anatomy-selected button {
-  background: #dc2626;
-  color: #fff;
+  background: var(--accent-orange);
+  color: #11151e;
   border: none;
   border-radius: 10px;
   padding: 12px 28px;
@@ -112,7 +112,7 @@
 }
 
 .anatomy-selected button:hover {
-  background: #b91c1c;
+  background: #e85b17;
 }
 
 .anatomy-category {
@@ -147,9 +147,9 @@
 
 .anatomy-muscle:hover,
 .anatomy-muscle.active {
-  border-color: #ef4444;
-  background: #351515;
-  color: #f87171;
+  border-color: var(--accent-orange);
+  background: color-mix(in srgb, var(--accent-orange) 15%, #171717);
+  color: var(--accent-orange);
 }
 
 @media (max-width: 900px) {

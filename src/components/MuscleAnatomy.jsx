@@ -88,12 +88,13 @@ export default function MuscleAnatomy({ onSelectMuscle }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const accent = getComputedStyle(containerRef.current).getPropertyValue("--accent-orange").trim();
     const chart = new BodyChart(containerRef.current, {
       view: ViewSide.BOTH,
       bodyState: {},
       showTooltip: true,
       showViewLabel: false,
-      intensityColor: (value) => (value > 0 ? "#dc2626" : "#737373"),
+      intensityColor: (value) => (value > 0 ? accent : "#737373"),
 
       onMuscleClick(id) {
         const muscle = getMuscleGroup(id);

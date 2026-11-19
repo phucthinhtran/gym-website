@@ -43,6 +43,17 @@
   border-radius: 18px;
 }
 
+.detail-video-source {
+  margin-top: 10px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.detail-video-source a {
+  color: var(--accent-orange);
+  text-decoration: underline;
+}
+
 .detail-tags {
   display: flex;
   gap: 10px;
@@ -96,8 +107,8 @@
   font-size: 15px;
 }
 
-.detail-stats .lime-text {
-  color: #b4f536;
+.detail-stats .accent-text {
+  color: var(--accent-orange);
 }
 
 .detail-add-button {
@@ -106,7 +117,7 @@
   margin-top: 24px;
   border: none;
   border-radius: 10px;
-  background: #b4f536;
+  background: var(--accent-orange);
   color: #111;
   font-weight: bold;
   cursor: pointer;
@@ -144,7 +155,7 @@
 }
 
 .detail-panel h3 {
-  color: #b4f536;
+  color: var(--accent-orange);
   margin: 28px 0 15px;
 }
 
@@ -167,7 +178,7 @@
 }
 
 .detail-steps li span {
-  background: #b4f536;
+  background: var(--accent-orange);
   color: #111;
   border-radius: 50%;
   width: 34px;
@@ -220,7 +231,7 @@
 
 .workout-form button {
   padding: 14px;
-  background: #b4f536;
+  background: var(--accent-orange);
   border: none;
   border-radius: 10px;
   color: #111;
@@ -230,7 +241,7 @@
 
 .save-message {
   margin-top: 15px;
-  color: #b4f536 !important;
+  color: var(--accent-orange) !important;
 }
 
 .detail-related {
@@ -276,7 +287,7 @@
 }
 
 .related-card span {
-  color: #b4f536;
+  color: var(--accent-orange);
 }
 
 @media (max-width: 900px) {

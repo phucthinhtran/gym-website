@@ -13,4 +13,6 @@ export const videos = {
     "https://cdn.jsdelivr.net/gh/mytoandeptrai/gymatlas-media@v1.1.0/media/video/sit-up.mp4",
   barbellhipthrust:
     "https://cdn.jsdelivr.net/gh/mytoandeptrai/gymatlas-media@v1.1.0/media/video/barbell-hip-thrust.mp4",
+  machineTBarRow:
+    "https://cdn.jsdelivr.net/gh/mytoandeptrai/gymatlas-media@v1.1.0/media/video/machine-t-bar-row.mp4",
 };

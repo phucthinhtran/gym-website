@@ -38,6 +38,10 @@ function App() {
     setSelectedExercise(null);
   }, []);
 
+  function handleWorkoutSaved(records) {
+    setWorkoutHistory({ records, error: false });
+  }
+
   return (
     <>
       <Navbar onBrowseExercises={() => setSelectedExercise(null)} />
@@ -63,13 +67,13 @@ function App() {
         }}
         equipment={equipment}
         onSelectEquipment={setEquipment}
-        onWorkoutSaved={(records) => setWorkoutHistory({ records, error: false })}
+        onWorkoutSaved={handleWorkoutSaved}
       />
       <WorkoutSchedule
         exerciseId={scheduledExerciseId}
         onSelectExercise={setScheduledExerciseId}
       />
-      <WorkoutHistory {...workoutHistory} />
+      <WorkoutHistory {...workoutHistory} onWorkoutSaved={handleWorkoutSaved} />
       <BmiCalculator />
     </>
   );
